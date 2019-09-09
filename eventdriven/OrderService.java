@@ -1,7 +1,5 @@
 /** 
-kamel run --name=order-service-event -d camel-swagger-java -d camel-jackson -d camel-undertow -d mvn:org.apache.activemq:activemq-camel:5.15.9 -d mvn:org.apache.activemq:activemq-client:5.15.9 OrderService.java
 kamel run --name=order-service-event -d camel-swagger-java -d camel-jackson -d camel-undertow -d camel-amqp OrderService.java
-kamel run --name=order-service-event OrderService.java
 */
 import java.util.HashMap;
 import org.apache.camel.Processor;
@@ -47,7 +45,7 @@ public class OrderService extends RouteBuilder {
             .marshal(jacksonDataFormat)
             .convertBodyTo(String.class)
             .log("Order to Notify ${body}")
-            .to("e");
+            .to("");
 
         
     }

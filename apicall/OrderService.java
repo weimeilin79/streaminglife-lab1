@@ -40,6 +40,11 @@ public class OrderService extends RouteBuilder {
             .removeHeader("CamelHttp*").setHeader(Exchange.HTTP_METHOD, constant(org.apache.camel.component.http4.HttpMethods.POST))
             .setBody(simple("${headers.myinputBody}"))
             
+            .multicast().parallelProcessing()
+            .to("http4://inventory-service/notify/order?bridgeEndpoint=true",
+                "http4://sales-service/notify/order?bridgeEndpoint=true",
+                "http4://shipping-service/notify/order?bridgeEndpoint=true")
+            .end()
             
             .removeHeaders("*")
             .setBody().constant("DONE")

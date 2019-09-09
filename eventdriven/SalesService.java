@@ -1,6 +1,4 @@
 /** 
-kamel run --name=sales-service -d camel-swagger-java -d camel-jackson -d camel-undertow -d mvn:org.apache.activemq:activemq-camel:5.15.9 -d mvn:org.apache.activemq:activemq-client:5.15.9 SalesService.java
-kamel run --name=sales-service -d camel-swagger-java -d camel-jackson -d camel-undertow -d camel-ahc-ws -d mvn:org.apache.activemq:activemq-camel:5.15.9 -d mvn:org.apache.activemq:activemq-client:5.15.9 SalesService.java --dev
 kamel run --name=sales-service -d camel-jackson -d camel-ahc-ws -d camel-amqp SalesService.java
 */
 import java.util.HashMap;
